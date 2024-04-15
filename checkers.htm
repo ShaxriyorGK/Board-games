@@ -1,0 +1,341 @@
+<!-- Dekstop site -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Checkers - Draughts</title>
+    
+    <style>
+        
+        p {
+            font-size: 70px;
+            font-family: Times New Roman;
+        }
+        
+        #board {
+            display: grid;
+            margin-top: 5%;
+            border: solid 14px;
+        }
+        
+        .q {
+            display: flex; 
+        }
+        
+        .w, .b {
+            width: 100%;
+            height: 7.3em;
+        }
+        
+        .w { 
+            background: rgb(224, 255, 255);
+        }
+        
+        .b {
+            background: rgb(147,59,5);
+            color: rgb(81,51,6); 
+            font-size: 600%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        button {
+            width: 480px;
+            height: 90px;
+            font-size: 50px;
+            margin: 1%;
+        }
+        
+        .btn {
+            justify-content: center;
+            display: flex;
+        }
+        hr {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            padding: 0;
+            margin: 0;
+            font-size: 67px;
+            z-index: 99;
+        }
+            
+        #b {
+            background: #000;
+            border: solid;
+            transform: rotate(180deg);
+        }
+        
+        #w {
+            background: #fff;
+            border: solid #fff;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    
+    <p id="p">0 moved</p>
+    
+    <div id="board">
+        
+        <div class="q">
+            <div id="a8" class="w"></div>
+            <div id="b8" class="b"><hr id="b" class="no"></div>
+            <div id="c8" class="w"></div>
+            <div id="d8" class="b"><hr id="b" class="no"></div>
+            <div id="e8" class="w"></div>
+            <div id="f8" class="b"><hr id="b" class="no"></div>
+            <div id="g8" class="w"></div>
+            <div id="h8" class="b"><hr id="b" class="no"></div>
+        </div>
+        
+        <div class="q">
+            <div id="a7" class="b"><hr id="b" class="no"></div>
+            <div id="b7" class="w"></div>
+            <div id="c7" class="b"><hr id="b" class="no"></div>
+            <div id="d7" class="w"></div>
+            <div id="e7" class="b"><hr id="b" class="no"></div>
+            <div id="f7" class="w"></div>
+            <div id="g7" class="b"><hr id="b" class="no"></div>
+            <div id="h7" class="w"></div>
+        </div>
+        
+        <div class="q">
+            <div id="a6" class="w"></div>
+            <div id="b6" class="b"><hr id="b" class="no"></div>
+            <div id="c6" class="w"></div>
+            <div id="d6" class="b"><hr id="b" class="no"></div>
+            <div id="e6" class="w"></div>
+            <div id="f6" class="b"><hr id="b" class="no"></div>
+            <div id="g6" class="w"></div>
+            <div id="h6" class="b"><hr id="b" class="no"></div>
+        </div>
+        
+        <div class="q">
+            <div id="a5" class="b"></div>
+            <div id="b5" class="w"></div>
+            <div id="c5" class="b"></div>
+            <div id="d5" class="w"></div>
+            <div id="e5" class="b"></div>
+            <div id="f5" class="w"></div>
+            <div id="g5" class="b"></div>
+            <div id="h5" class="w"></div>
+        </div>
+        
+        <div class="q">
+            <div id="a4" class="w"></div>
+            <div id="b4" class="b"></div>
+            <div id="c4" class="w"></div>
+            <div id="d4" class="b"></div>
+            <div id="e4" class="w"></div>
+            <div id="f4" class="b"></div>
+            <div id="g4" class="w"></div>
+            <div id="h4" class="b"></div>
+        </div>
+        
+        <div class="q">
+            <div id="a3" class="b"><hr id="w" class="no"></div>
+            <div id="b3" class="w"></div>
+            <div id="c3" class="b"><hr id="w" class="no"></div>
+            <div id="d3" class="w"></div>
+            <div id="e3" class="b"><hr id="w" class="no"></div>
+            <div id="f3" class="w"></div>
+            <div id="g3" class="b"><hr id="w" class="no"></div>
+            <div id="h3" class="w"></div>
+        </div>
+        
+        <div class="q">
+            <div id="a2" class="w"></div>
+            <div id="b2" class="b"><hr id="w" class="no"></div>
+            <div id="c2" class="w"></div>
+            <div id="d2" class="b"><hr id="w" class="no"></div>
+            <div id="e2" class="w"></div>
+            <div id="f2" class="b"><hr id="w" class="no"></div>
+            <div id="g2" class="w"></div>
+            <div id="h2" class="b"><hr id="w" class="no"></div>
+        </div>
+        
+        <div class="q">
+            <div id="a1" class="b"><hr id="w" class="no"></div>
+            <div id="b1" class="w"></div>
+            <div id="c1" class="b"><hr id="w" class="no"></div>
+            <div id="d1" class="w"></div>
+            <div id="e1" class="b"><hr id="w" class="no"></div>
+            <div id="f1" class="w"></div>
+            <div id="g1" class="b"><hr id="w" class="no"></div>
+            <div id="h1" class="w"></div>
+        </div>
+        
+    </div>
+    
+    <div class="btn">
+        <button onclick="del()">Remove</button>
+        <button onclick="dam(delet)">King</button>
+    </div>
+    <div class="btn">
+        <button onclick="disactive()">Disactive</button>
+        <button onclick="location.reload()">Refresh</button>
+    </div>
+    
+    <script>
+        
+        moves = 0
+        f = false
+        t = true
+        now = f
+        h = 'hr'
+        c = 'click'
+        k = '&#128305'
+        goTo = ''
+        delet = ''
+        me = ''
+        
+        dg = id => document.getElementById(id)
+        dt = (tag, ind) => document.getElementsByTagName(tag)[ind - 1]
+        
+        b = '<hr id="b" class="no">'
+        w = '<hr id="w" class="no">'
+        
+        b8 = dg('b8')
+        d8 = dg('d8')
+        f8 = dg('f8')
+        h8 = dg('h8')
+        a7 = dg('a7')
+        c7 = dg('c7')
+        e7 = dg('e7')
+        g7 = dg('g7')
+        b6 = dg('b6')
+        d6 = dg('d6')
+        f6 = dg('f6')
+        h6 = dg('h6')
+        
+        a3 = dg('a3')
+        c3 = dg('c3')
+        e3 = dg('e3')
+        g3 = dg('g3')
+        b2 = dg('b2')
+        d2 = dg('d2')
+        f2 = dg('f2')
+        h2 = dg('h2')
+        a1 = dg('a1')
+        c1 = dg('c1')
+        e1 = dg('e1')
+        f1 = dg('f1')
+        h1 = dg('h1')
+        
+        a5 = dg('a5')
+        c5 = dg('c5')
+        e5 = dg('e5')
+        g5 = dg('g5')
+        b4 = dg('b4')
+        d4 = dg('d4')
+        f4 = dg('f4')
+        h4 = dg('h4')
+        
+        all = [
+            a1, a3, a5, a7,
+            b2, b4, b6, b8,
+            c1, c3, c5, c7,
+            d2, d4, d6, d8,
+            e1, e3, e5, e7,
+            f2, f4, f6, f8,
+            g1, g3, g5, g7,
+            h2, h4, h6, h8
+        ]
+        
+        dt(h,  1).addEventListener(c, function() { me = this })
+        dt(h,  2).addEventListener(c, function() { me = this })
+        dt(h,  3).addEventListener(c, function() { me = this })
+        dt(h,  4).addEventListener(c, function() { me = this })
+        dt(h,  5).addEventListener(c, function() { me = this })
+        dt(h,  6).addEventListener(c, function() { me = this })
+        dt(h,  7).addEventListener(c, function() { me = this })
+        dt(h,  8).addEventListener(c, function() { me = this })
+        dt(h,  9).addEventListener(c, function() { me = this })
+        dt(h, 10).addEventListener(c, function() { me = this })
+        dt(h, 11).addEventListener(c, function() { me = this })
+        dt(h, 12).addEventListener(c, function() { me = this })
+        dt(h, 13).addEventListener(c, function() { me = this })
+        dt(h, 14).addEventListener(c, function() { me = this })
+        dt(h, 15).addEventListener(c, function() { me = this })
+        dt(h, 16).addEventListener(c, function() { me = this })
+        dt(h, 17).addEventListener(c, function() { me = this })
+        dt(h, 18).addEventListener(c, function() { me = this })
+        dt(h, 19).addEventListener(c, function() { me = this })
+        dt(h, 20).addEventListener(c, function() { me = this })
+        dt(h, 21).addEventListener(c, function() { me = this })
+        dt(h, 22).addEventListener(c, function() { me = this })
+        dt(h, 23).addEventListener(c, function() { me = this })
+        dt(h, 24).addEventListener(c, function() { me = this })
+        
+        disactive = () => {
+            delet.style.boxShadow = ''
+            delet.style.zIndex = '0'
+            now = f
+        }
+        
+        for(i = 0; i < 32; i++) {
+           
+            all[i].addEventListener(c, function() {
+                
+                if(now) {
+                    
+                    moves++
+                    goTo = this
+                    delet.style.boxShadow = ''
+                    delet.style.zIndex = '0'
+                    d = delet.querySelector(h)
+                    
+                    if(d.id == 'w') {
+                        goTo.innerHTML = '<hr id="w" class="no">'
+                    } else {
+                        goTo.innerHTML = '<hr id="b" class="no">'
+                    }
+                    
+                    if(delet.querySelector(h).class == 'king') {
+                        dam(goTo)
+                    }
+                        
+                    now = f
+                    delet.innerHTML = ''
+                    
+                } 
+                
+                else if(!now) {
+                    now = t
+                    delet = this
+                    this.style.boxShadow = '0 0 20px #764900'
+                    this.style.zIndex = '10'
+                }
+                
+                dg('p').innerHTML = moves + ' moved'
+                    
+            })
+        
+        }
+                
+        del = () => {
+            delet.innerHTML = ''
+            delet.style.boxShadow = ''
+            delet.style.zIndex = '0'
+            now = f
+        }
+        
+        dam = delet => {
+            d = delet.querySelector(h)
+            d.innerHTML = '&#128305'
+            d.class = 'king'
+            delet.style.boxShadow = ''
+            delet.style.zIndex = '0'
+            now = f
+        }
+        
+    </script>
+    
+</body>
+</html>
